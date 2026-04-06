@@ -11,7 +11,7 @@ export async function POST(req: Request) {
   const { messages } = await req.json();
 
   const result = streamText({
-    model: google('gemini-1.5-flash'),
+    model: google('gemini-2.5-flash'),
     messages,
     system: `You are the helpful wedding assistant for Ethan and Artemis's wedding.
     
@@ -30,5 +30,5 @@ export async function POST(req: Request) {
     Be extremely polite, warm, and joyful for the couple. Respond concisely. Do not use Markdown unless absolutely necessary for readability.`,
   });
 
-  return result.toDataStreamResponse();
+  return result.toUIMessageStreamResponse();
 }

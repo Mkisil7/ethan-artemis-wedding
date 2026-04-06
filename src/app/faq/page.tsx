@@ -1,9 +1,25 @@
 "use client";
 
-import { useChat } from "ai/react";
+import { useChat } from "@ai-sdk/react";
+import { useState } from "react";
 
 export default function FAQ() {
-  const { messages, input, handleInputChange, handleSubmit, isLoading } = useChat();
+  const { messages, status, sendMessage } = useChat();
+  const [input, setInput] = useState("");
+  const isLoading = status === "submitted" || status === "streaming";
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInput(e.target.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!input.trim() || isLoading) return;
+    
+    // AbstractChat signature for Vercel AI SDK 6+
+    sendMessage({ parts: [{ type: "text", text: input }], role: "user" });
+    setInput("");
+  };
 
   return (
     <div className="min-h-screen bg-sand text-med pb-24">
@@ -35,7 +51,7 @@ export default function FAQ() {
                       : 'bg-sand-dark text-med border-med/5 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
                   }`}
                 >
-                  {m.content}
+                  {m.parts?.filter((p: any) => p.type === 'text').map((p: any) => p.text).join('') || (typeof (m as any).content === 'string' ? (m as any).content : '')}
                 </div>
               </div>
             ))}
