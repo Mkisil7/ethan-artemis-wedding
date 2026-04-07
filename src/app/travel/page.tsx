@@ -1,4 +1,5 @@
- 
+import RivieraMap from "@/components/RivieraMap";
+
 const HOTELS = [
   {
     name: "The Margi",
@@ -76,6 +77,11 @@ export default function Travel() {
           <p className="text-lg leading-relaxed text-med/80">
             We are thrilled to welcome you to the beautiful Athenian Riviera. Below is a curated selection of stunning hotels very close to our venues. We recommend booking early as July is peak season in Greece!
           </p>
+        </div>
+
+        {/* Map Section */}
+        <div className="mb-20 max-w-5xl mx-auto shadow-2xl">
+          <RivieraMap />
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
