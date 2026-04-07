@@ -66,7 +66,7 @@ export default function RSVP() {
     <div className="min-h-screen bg-sand text-med flex flex-col pt-32 pb-24 items-center">
       <div className="text-center px-4 mb-12">
         <h1 className="font-cursive text-5xl md:text-7xl mb-4 text-aegean">RSVP</h1>
-        <p className="text-med/70 font-medium tracking-widest uppercase text-sm">We can't wait to celebrate with you</p>
+        <p className="text-med/70 font-medium tracking-widest uppercase text-sm">We can&apos;t wait to celebrate with you</p>
       </div>
 
       <div className="w-full max-w-lg bg-white p-8 md:p-12 shadow-sm border border-med/5">
@@ -77,7 +77,7 @@ export default function RSVP() {
               <p className="text-med/80 leading-relaxed mb-2">Please enter your first and last name to unlock your RSVP.</p>
               {status === "not_found" && (
                 <p className="text-red-500 text-sm mt-4 p-4 bg-red-50 border border-red-100">
-                  We couldn't find your name on the guest list. Please try checking your spelling or contact us if there's an issue!
+                  We couldn&apos;t find your name on the guest list. Please try checking your spelling or contact us if there&apos;s an issue!
                 </p>
               )}
               {status === "error" && (

@@ -35,7 +35,7 @@ export default function FAQ() {
           <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
             <div className="flex self-start max-w-[80%] md:max-w-[70%]">
               <div className="bg-sand-dark px-6 py-4 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl border border-med/5 shadow-sm text-med/90">
-                Hi! I'm the digital assistant for Ethan & Artemis's wedding. Ask me any questions about the schedule, travel, dress code, or accommodations!
+                Hi! I&apos;m the digital assistant for Ethan & Artemis&apos;s wedding. Ask me any questions about the schedule, travel, dress code, or accommodations!
               </div>
             </div>
 
@@ -51,7 +51,7 @@ export default function FAQ() {
                       : 'bg-sand-dark text-med border-med/5 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
                   }`}
                 >
-                  {m.parts?.filter((p: any) => p.type === 'text').map((p: any) => p.text).join('') || (typeof (m as any).content === 'string' ? (m as any).content : '')}
+                  {m.parts?.filter((p: { type: string; text?: string }) => p.type === 'text').map((p: { type: string; text?: string }) => p.text).join('') || (typeof (m as unknown as { content?: string }).content === 'string' ? (m as unknown as { content?: string }).content : '')}
                 </div>
               </div>
             ))}

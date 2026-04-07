@@ -26,7 +26,7 @@ export default function Registry() {
             <h2 className="font-cursive text-4xl mb-4 text-aegean">House Fund</h2>
             
             <p className="text-lg leading-relaxed text-med/80 mb-8 italic">
-              "We'll post our registry here when we're finished building it. Thank you in advance!"
+              &quot;We&apos;ll post our registry here when we&apos;re finished building it. Thank you in advance!&quot;
             </p>
 
             {/* Structure for GoFundMe Style Fund (Disabled until ready) */}

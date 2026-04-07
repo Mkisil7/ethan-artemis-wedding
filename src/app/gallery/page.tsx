@@ -1,5 +1,4 @@
-import Image from "next/image";
-
+ 
 // TODO: Replace these Unsplash URLs with your own photo paths once you add them to the /public folder.
 // Example: "/photos/couple-1.jpg"
 const GALLERY_IMAGES = [
