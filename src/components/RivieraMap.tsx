@@ -14,17 +14,17 @@ interface LocationInfo {
 
 const LOCATIONS: LocationInfo[] = [
   // Venues
-  { id: "v1", name: "Island Art and Taste (Wedding)", category: "venue", position: { lat: 37.8182, lng: 23.8055 }, url: "https://www.islandartandtaste.gr" },
+  { id: "v1", name: "Island Art & Taste (Wedding)", category: "venue", position: { lat: 37.8185, lng: 23.7955 }, url: "https://www.islandartandtaste.gr" },
   { id: "v2", name: "Lake Vouliagmeni (Welcome)", category: "venue", position: { lat: 37.8078, lng: 23.7845 }, url: "https://www.limnivouliagmenis.gr" },
   // Hotels
-  { id: "h1", name: "The Margi", category: "hotel", position: { lat: 37.8106, lng: 23.7801 }, url: "https://www.themargi.gr" },
-  { id: "h2", name: "Four Seasons Astir Palace", category: "hotel", position: { lat: 37.8037, lng: 23.7744 }, url: "https://www.fourseasons.com/athens/" },
-  { id: "h3", name: "Grand Resort Lagonissi", category: "hotel", position: { lat: 37.7214, lng: 23.8860 }, url: "https://www.lagonissiresort.gr" },
-  { id: "h4", name: "The Roc Club", category: "hotel", position: { lat: 37.8080, lng: 23.7810 }, url: "https://www.therocclub.com" },
-  { id: "h5", name: "Azur Hotel", category: "hotel", position: { lat: 37.8120, lng: 23.7808 }, url: "https://www.azurhotel.gr" },
-  { id: "h6", name: "Somewhere Boutique", category: "hotel", position: { lat: 37.8135, lng: 23.7812 }, url: "https://somewhere-hotels.com/vouliagmeni/" },
-  { id: "h7", name: "Divani Escape", category: "hotel", position: { lat: 37.8115, lng: 23.7820 }, url: "https://divaniescape.com" },
-  { id: "h8", name: "One&Only Aesthesis", category: "hotel", position: { lat: 37.8596, lng: 23.7380 }, url: "https://www.oneandonlyresorts.com/aesthesis" }
+  { id: "h1", name: "The Margi", category: "hotel", position: { lat: 37.8137, lng: 23.7738 }, url: "https://www.themargi.gr" },
+  { id: "h2", name: "Four Seasons Astir Palace", category: "hotel", position: { lat: 37.8016, lng: 23.7719 }, url: "https://www.fourseasons.com/athens/" },
+  { id: "h3", name: "Grand Resort Lagonissi", category: "hotel", position: { lat: 37.7779, lng: 23.8890 }, url: "https://www.lagonissiresort.gr" },
+  { id: "h4", name: "The Roc Club", category: "hotel", position: { lat: 37.8080, lng: 23.7725 }, url: "https://www.therocclub.com" },
+  { id: "h5", name: "Azur Hotel", category: "hotel", position: { lat: 37.8153, lng: 23.7765 }, url: "https://www.azurhotel.gr" },
+  { id: "h6", name: "Somewhere Boutique", category: "hotel", position: { lat: 37.8106, lng: 23.7785 }, url: "https://somewhere-hotels.com/vouliagmeni/" },
+  { id: "h7", name: "Divani Escape", category: "hotel", position: { lat: 37.8277, lng: 23.7723 }, url: "https://divaniescape.com" },
+  { id: "h8", name: "One&Only Aesthesis", category: "hotel", position: { lat: 37.8558, lng: 23.7500 }, url: "https://www.oneandonlyresorts.com/aesthesis" }
 ];
 
 export default function RivieraMap() {
@@ -50,8 +50,8 @@ export default function RivieraMap() {
         <Map
           defaultCenter={{ lat: 37.808, lng: 23.784 }} // Centered on Vouliagmeni
           defaultZoom={13}
-          mapId="e8c5660ae33f789" // Provide any legitimate MapID to use advanced markers, or fallback to generic
-          gestureHandling="greedy"
+          mapId="DEMO_MAP_ID" // Enables AdvancedMarkers while retaining standard Google Maps styling (POIs, restaurants)
+          gestureHandling="cooperative" // Prevents map from stealing page scrolls
           disableDefaultUI={false}
           className="w-full h-full"
         >
