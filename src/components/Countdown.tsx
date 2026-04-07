@@ -47,26 +47,26 @@ export default function Countdown() {
   return (
     <div className="flex gap-4 md:gap-10 justify-center text-center mt-12 mb-6 p-6 backdrop-blur-md bg-med/10 shadow-2xl border border-sand/10">
       <div className="flex flex-col items-center">
-        <span className="text-4xl md:text-6xl font-cursive drop-shadow-xl">{timeLeft.days}</span>
+        <span className="text-3xl sm:text-4xl md:text-6xl font-cursive drop-shadow-xl">{timeLeft.days}</span>
         <span className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] font-semibold text-sand/90 mt-3 drop-shadow-sm">Days</span>
       </div>
-      <span className="text-3xl md:text-5xl text-sand/50 font-light drop-shadow-sm mt-1">:</span>
+      <span className="text-2xl sm:text-3xl md:text-5xl text-sand/50 font-light drop-shadow-sm mt-1">:</span>
       
       <div className="flex flex-col items-center">
-        <span className="text-4xl md:text-6xl font-cursive drop-shadow-xl">{timeLeft.hours.toString().padStart(2, '0')}</span>
+        <span className="text-3xl sm:text-4xl md:text-6xl font-cursive drop-shadow-xl">{timeLeft.hours.toString().padStart(2, '0')}</span>
         <span className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] font-semibold text-sand/90 mt-3 drop-shadow-sm">Hours</span>
       </div>
-      <span className="text-3xl md:text-5xl text-sand/50 font-light drop-shadow-sm mt-1">:</span>
+      <span className="text-2xl sm:text-3xl md:text-5xl text-sand/50 font-light drop-shadow-sm mt-1">:</span>
       
       <div className="flex flex-col items-center">
-        <span className="text-4xl md:text-6xl font-cursive drop-shadow-xl">{timeLeft.minutes.toString().padStart(2, '0')}</span>
+        <span className="text-3xl sm:text-4xl md:text-6xl font-cursive drop-shadow-xl">{timeLeft.minutes.toString().padStart(2, '0')}</span>
         <span className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] font-semibold text-sand/90 mt-3 drop-shadow-sm">Mins</span>
       </div>
-      <span className="text-3xl md:text-5xl text-sand/50 font-light drop-shadow-sm mt-1">:</span>
+      <span className="text-2xl sm:text-3xl md:text-5xl text-sand/50 font-light drop-shadow-sm mt-1">:</span>
       
-      <div className="flex flex-col items-center w-[60px] md:w-[80px]"> 
+      <div className="flex flex-col items-center w-[50px] sm:w-[60px] md:w-[80px]"> 
         {/* Fixed width to prevent jumping as numbers change size */}
-        <span className="text-4xl md:text-6xl font-cursive drop-shadow-xl">{timeLeft.seconds.toString().padStart(2, '0')}</span>
+        <span className="text-3xl sm:text-4xl md:text-6xl font-cursive drop-shadow-xl">{timeLeft.seconds.toString().padStart(2, '0')}</span>
         <span className="text-[10px] md:text-[11px] uppercase tracking-[0.3em] font-semibold text-sand/90 mt-3 drop-shadow-sm">Secs</span>
       </div>
     </div>

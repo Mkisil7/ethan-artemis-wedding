@@ -63,7 +63,7 @@ export default function RSVP() {
   };
 
   return (
-    <div className="min-h-screen bg-sand text-med flex flex-col pt-32 pb-24 items-center">
+    <div className="min-h-screen bg-transparent text-med flex flex-col pt-32 pb-24 items-center">
       <div className="text-center px-4 mb-12">
         <h1 className="font-cursive text-5xl md:text-7xl mb-4 text-aegean">RSVP</h1>
         <p className="text-med/70 font-medium tracking-widest uppercase text-sm">We can&apos;t wait to celebrate with you</p>

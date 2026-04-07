@@ -54,7 +54,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isOpen && (
-        <div className="lg:hidden absolute top-20 left-0 w-full bg-sand/95 backdrop-blur-xl border-t border-med/10 shadow-xl py-8 flex flex-col items-center gap-6 h-screen">
+        <div className="lg:hidden absolute top-20 left-0 w-full bg-sand/95 backdrop-blur-xl border-t border-med/10 shadow-xl py-12 flex flex-col items-center gap-6 h-[100dvh] pb-32">
           {LINKS.map((link) => (
             <Link
               key={link.href}

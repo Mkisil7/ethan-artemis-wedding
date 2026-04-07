@@ -25,7 +25,7 @@ export default function Home() {
 
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center text-sand text-center px-4 w-full mt-20">
-          <h1 className="font-cursive text-7xl md:text-9xl mb-2 drop-shadow-2xl opacity-95">
+          <h1 className="font-cursive text-6xl sm:text-7xl md:text-9xl mb-2 drop-shadow-2xl opacity-95">
             Ethan & Artemis
           </h1>
           <p className="text-lg md:text-2xl font-light tracking-[0.25em] mb-4 uppercase drop-shadow-md text-sand/90">
@@ -53,7 +53,7 @@ export default function Home() {
       </div>
 
       {/* -------------------- Our Story Section -------------------- */}
-      <div className="bg-sand text-med py-24 md:py-32 px-4 relative z-20">
+      <div className="bg-sand/75 backdrop-blur-md text-med py-24 md:py-32 px-4 relative z-20">
         <div className="max-w-3xl mx-auto flex flex-col items-center text-center">
           <h2 className="font-cursive text-5xl md:text-7xl mb-6 text-aegean">Our Story</h2>
           

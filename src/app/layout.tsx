@@ -30,7 +30,11 @@ export default function RootLayout({
       lang="en"
       className={`${inter.variable} ${greatVibes.variable} h-full antialiased`}
     >
-      <body className="min-h-screen flex flex-col pt-20">
+      <body className="min-h-screen flex flex-col pt-20 relative">
+        <div 
+          className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/background.png')" }}
+        />
         <SmoothScroll>
           <Navbar />
           <main className="flex-1 flex flex-col">{children}</main>
