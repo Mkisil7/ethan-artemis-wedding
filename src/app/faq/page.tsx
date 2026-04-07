@@ -1,92 +1,81 @@
 "use client";
 
-import { useChat } from "@ai-sdk/react";
 import { useState } from "react";
+import { ChevronDown } from "lucide-react";
 
 export default function FAQ() {
-  const { messages, status, sendMessage } = useChat();
-  const [input, setInput] = useState("");
-  const isLoading = status === "submitted" || status === "streaming";
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInput(e.target.value);
+  const toggleAccordion = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!input.trim() || isLoading) return;
-    
-    // AbstractChat signature for Vercel AI SDK 6+
-    sendMessage({ parts: [{ type: "text", text: input }], role: "user" });
-    setInput("");
-  };
+  const FAQS = [
+    {
+      question: "When and where is the wedding taking place?",
+      answer: "We are tying the knot on the beautiful Athenian Riviera in Vouliagmeni, Greece! The main wedding ceremony and reception will be on Saturday, July 3, 2027, from 6:30 PM until 5:00 AM at Island Art and Taste."
+    },
+    {
+      question: "Is there a welcome event?",
+      answer: "Yes! We are hosting a Welcome Event for all guests on Friday, July 2, 2027, starting at 7:00 PM until 1:00 AM at Lake Vouliagmeni. There will be cocktails and light bites to kick off the weekend."
+    },
+    {
+      question: "What is the dress code?",
+      answer: "The dress code for the wedding day is Black Tie. We can't wait to see everyone dressed to the nines! For the Welcome Event, elegant resort wear is perfect."
+    },
+    {
+      question: "Do you have any recommendations for where to stay?",
+      answer: "We highly recommend staying near Vouliagmeni. Some of our favorites are The Margi, Four Seasons Astir Palace Hotel, Grand Resort Lagonissi, The Roc Club, Azur Hotel, Somewhere Boutique, Divani Escape, and One&Only Aesthesis."
+    },
+    {
+      question: "What should we do while we're in Greece?",
+      answer: "There's so much to explore! We recommend taking a dip in the thermal spa at Lake Vouliagmeni, relaxing at Astir Beach (an exclusive club), exploring the Plaka Neighborhood for shopping and food, and of course, visiting The Acropolis in Athens (pro-tip: go early in the morning to beat the heat!)."
+    },
+    {
+      question: "Where are you registered?",
+      answer: "Your presence is the greatest gift! However, if you'd like to contribute, we will be launching a House Fund closer to our wedding date. Check back on the Registry page!"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-sand text-med pb-24">
-      <div className="pt-32 pb-12 text-center px-4">
-        <h1 className="font-cursive text-5xl md:text-7xl mb-4 text-aegean">Guest Support</h1>
-        <p className="text-med/70 font-medium tracking-widest uppercase text-sm">Ask our digital wedding assistant anything</p>
+      <div className="pt-32 pb-16 text-center px-4">
+        <h1 className="font-cursive text-5xl md:text-7xl mb-4 text-aegean">Guest FAQ</h1>
+        <p className="text-med/70 font-medium tracking-widest uppercase text-sm">Everything you need to know</p>
       </div>
 
       <div className="max-w-3xl mx-auto px-4 md:px-6">
-        <div className="bg-white border border-med/10 shadow-sm h-[600px] flex flex-col">
-          
-          {/* Chat Window */}
-          <div className="flex-1 overflow-y-auto p-6 flex flex-col gap-6">
-            <div className="flex self-start max-w-[80%] md:max-w-[70%]">
-              <div className="bg-sand-dark px-6 py-4 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl border border-med/5 shadow-sm text-med/90">
-                Hi! I&apos;m the digital assistant for Ethan & Artemis&apos;s wedding. Ask me any questions about the schedule, travel, dress code, or accommodations!
+        <div className="bg-white border border-med/10 shadow-sm p-4 md:p-8 flex flex-col gap-4">
+          {FAQS.map((faq, idx) => (
+            <div 
+              key={idx} 
+              className="border-b border-med/10 last:border-0 pb-2"
+            >
+              <button
+                onClick={() => toggleAccordion(idx)}
+                className="w-full flex justify-between items-center py-4 text-left group"
+              >
+                <span className="font-semibold tracking-wider text-med/90 uppercase text-sm md:text-base group-hover:text-aegean transition-colors">
+                  {faq.question}
+                </span>
+                <ChevronDown 
+                  className={`w-5 h-5 text-med/50 transition-transform duration-300 ml-4 shrink-0 ${openIndex === idx ? 'rotate-180 text-aegean' : ''}`}
+                />
+              </button>
+              
+              <div 
+                className={`grid transition-all duration-300 ease-in-out ${
+                  openIndex === idx ? 'grid-rows-[1fr] opacity-100 pb-6' : 'grid-rows-[0fr] opacity-0'
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <p className="text-med/80 leading-relaxed md:text-lg">
+                    {faq.answer}
+                  </p>
+                </div>
               </div>
             </div>
-
-            {messages.map((m) => (
-              <div 
-                key={m.id} 
-                className={`flex max-w-[80%] md:max-w-[70%] ${m.role === 'user' ? 'self-end' : 'self-start'}`}
-              >
-                <div 
-                  className={`px-6 py-4 border shadow-sm text-sm md:text-base leading-relaxed ${
-                    m.role === 'user' 
-                      ? 'bg-aegean text-sand border-aegean rounded-tl-2xl rounded-tr-2xl rounded-bl-2xl' 
-                      : 'bg-sand-dark text-med border-med/5 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl'
-                  }`}
-                >
-                  {m.parts?.filter((p: { type: string; text?: string }) => p.type === 'text').map((p: { type: string; text?: string }) => p.text).join('') || (typeof (m as unknown as { content?: string }).content === 'string' ? (m as unknown as { content?: string }).content : '')}
-                </div>
-              </div>
-            ))}
-            
-            {isLoading && (
-              <div className="flex self-start max-w-[80%]">
-                <div className="bg-sand-dark px-5 py-4 rounded-tl-2xl rounded-tr-2xl rounded-br-2xl border border-med/5 text-med/50 flex gap-2 items-center">
-                  <span className="w-1.5 h-1.5 bg-med/40 rounded-full animate-bounce" style={{ animationDelay: "0ms" }}></span>
-                  <span className="w-1.5 h-1.5 bg-med/40 rounded-full animate-bounce" style={{ animationDelay: "150ms" }}></span>
-                  <span className="w-1.5 h-1.5 bg-med/40 rounded-full animate-bounce" style={{ animationDelay: "300ms" }}></span>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Input Area */}
-          <div className="p-4 border-t border-med/10 bg-white shadow-[0_-10px_30px_rgba(0,0,0,0.02)]">
-            <form onSubmit={handleSubmit} className="relative flex">
-              <input
-                className="flex-1 bg-sand/30 border border-med/20 py-4 pl-6 pr-28 outline-none focus:border-aegean transition-colors text-med placeholder:text-med/40 rounded-sm"
-                value={input}
-                onChange={handleInputChange}
-                placeholder="What's the dress code again?"
-                disabled={isLoading}
-              />
-              <button 
-                type="submit" 
-                disabled={isLoading || !input.trim()}
-                className="absolute right-2 top-2 bottom-2 bg-med text-sand px-6 font-semibold tracking-wider uppercase text-xs hover:bg-aegean transition-colors disabled:opacity-50 disabled:cursor-not-allowed rounded-sm"
-              >
-                Send
-              </button>
-            </form>
-          </div>
-
+          ))}
         </div>
       </div>
     </div>
